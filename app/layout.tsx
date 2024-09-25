@@ -29,16 +29,6 @@ export default function RootLayout({
                   View Products
                 </Link>
               </li>
-              <li>
-                <Link href="/products/update" className="hover:text-gray-300">
-                  Update Product
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/delete" className="hover:text-gray-300">
-                  Delete Product
-                </Link>
-              </li>
             </ul>
           </nav>
 

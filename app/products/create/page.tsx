@@ -51,7 +51,7 @@ const CreateProductPage = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2"
             required
           />
         </div>
@@ -62,7 +62,7 @@ const CreateProductPage = () => {
             type="number"
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
-            className="border p-2 w-full"
+            className="border p-2"
             required
           />
         </div>
@@ -72,7 +72,7 @@ const CreateProductPage = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2"
             required
           />
         </div>
@@ -82,7 +82,7 @@ const CreateProductPage = () => {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2"
             required
           >
             <option value="" disabled>

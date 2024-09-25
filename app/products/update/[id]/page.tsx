@@ -5,16 +5,20 @@ import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
 
 interface Category {
-  _id: string; // Category ID
-  name: string; // Category name
-  description: string; // Optional
+  _id: string;
+  name: string;
+  description: string;
 }
 
 const UpdateProductPage = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState<string>(""); // Store category ID
+  const [category, setCategory] = useState<Category>({
+    _id: "",
+    name: "",
+    description: "",
+  });
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,6 +27,7 @@ const UpdateProductPage = () => {
 
   // Fetch the product data by ID
   useEffect(() => {
+    console.log("IDDDD:", id);
     const fetchProduct = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/products/${id}`);
@@ -114,14 +119,14 @@ const UpdateProductPage = () => {
         <div>
           <label className="block mb-2">Category</label>
           <select
-            value={category} // Set selected value to category state
-            onChange={(e) => setCategory(e.target.value)} // Update category state on change
+            value={category?._id} // Set selected value to category state
+            onChange={(e) => setCategory({ ...category, _id: e.target.value })} // Update category state on change
             className="border p-2 w-full"
             required
           >
             <option value="">Select Category</option>
             {categories.map((cat) => (
-              <option key={cat._id} value={cat._id}>
+              <option defaultValue={id} key={cat._id} value={cat._id}>
                 {" "}
                 {/* Use category ID as value */}
                 {cat.name} {/* Display category name */}
